@@ -1,0 +1,27 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+    Home
+{% endblock %}
+
+{% block body %}
+    <div class="jumbotron text-center">
+		<h1>Fun With REST APIS</h1>
+		<h3>Still in progress</h3>
+    </div>
+
+    <div class="container-fluid text-center">
+        <h3><b>Comment what you think.</b></h3>
+
+	    <ul class="topics list-group">
+		{% for topic in topics %}
+		{% if topic.group_id == 0 %}
+		  <li class="list-group-item"><a href="{{url_for('show_topicPosts', topic_id=topic.id)}}">{{ topic.name }}</a></li>
+		{% endif %}
+	    {% else %}
+	      <li><em>Start A Discussion</em></li>
+		{% endfor %}
+		</ul>
+
+	</div>
+{% endblock %}
